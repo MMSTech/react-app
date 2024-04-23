@@ -1,26 +1,14 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
+import { Button } from 'react-bootstrap';
+
 
 export default class ProductList extends Component {
-  state = {
-    products: [],
-  };
-
-  getProducts = () => {
-    fetch("http://localhost:3000/products")
-      .then((response) => response.json())
-      .then((data) => this.setState({ products: data }));
-  };
-
-  componentDidMount() {
-    this.getProducts();
-  }
-
   render() {
     return (
       <div>
            <h3>
-          {this.props.info.title}-{this.props.currentCategory}
+             {this.props.info.title}-{this.props.currentCategory}
         </h3>
         <Table>
           <thead>
@@ -29,15 +17,21 @@ export default class ProductList extends Component {
               <th>CategoryId</th>
               <th>ProductName</th>
               <th>unitPrice</th>
+              <th>-</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.products.map((product) => (
-              <tr>
+            {this.props.products.map((product) => (
+              <tr key={product.id}>
                 <th scope="row">{product.id}</th>
                 <td>{product.CategoryId}</td>
                 <td>{product.ProductName}</td>
                 <td>{product.unitPrice}</td>
+                <td>
+                    <Button 
+                     onClick={()=>this.props.addToCart(product)}
+                     color="info">Add</Button>
+                </td>
               </tr>
             ))}
           </tbody>
