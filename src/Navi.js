@@ -10,7 +10,7 @@ import {
  } from 'reactstrap';
 import CartSummary from './CartSummary';
 
-export default class Example extends React.Component {
+export default class Navi extends React.Component {
   constructor(props) {
     super(props);
 
@@ -41,7 +41,9 @@ export default class Example extends React.Component {
             
               <CartSummary 
                     removeFromCart={this.props.removeFromCart}
-                   cart={this.props.cart}></CartSummary>
+                    cart={this.props.cart}>
+
+                </CartSummary>
             </Nav>
           </Collapse>
         </Navbar>
