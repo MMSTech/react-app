@@ -42,7 +42,6 @@ export default class Navi extends React.Component {
               <CartSummary 
                     removeFromCart={this.props.removeFromCart}
                     cart={this.props.cart}>
-
                 </CartSummary>
             </Nav>
           </Collapse>

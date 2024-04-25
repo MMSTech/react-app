@@ -8,6 +8,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 export default class CartSummary extends Component {
   renderSummary() {
     return (
@@ -16,7 +17,7 @@ export default class CartSummary extends Component {
           <DropdownToggle nav caret>
             Options -{this.props.cart.length}
           </DropdownToggle>
-          <DropdownMenu >
+          <DropdownMenu>
             {this.props.cart.map((cartItem) => (
               <DropdownItem key={cartItem.product.id}>
                 {cartItem.product.ProductName}
@@ -29,6 +30,12 @@ export default class CartSummary extends Component {
                 <Badge color="success">{cartItem.quantity}</Badge>
               </DropdownItem>
             ))}
+
+            <DropdownItem divider> </DropdownItem>
+
+            <DropdownItem>
+              <Link to="cart">goto cart</Link>
+            </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
       </div>
@@ -36,20 +43,20 @@ export default class CartSummary extends Component {
   }
 
   renderEmtyCart() {
-    return(
+    return (
       <NavItem>
-      <NavLink href="https://github.com/reactstrap/reactstrap">
-        Empty Card
-      </NavLink>
-    </NavItem>
-    )
+        <NavLink href="https://github.com/reactstrap/reactstrap">
+          Empty Card
+        </NavLink>
+      </NavItem>
+    );
   }
   render() {
     return (
       <div>
-        {this.props.cart.length > 0 ? 
-          this.renderSummary() : this.renderEmtyCart()
-          }
+        {this.props.cart.length > 0
+          ? this.renderSummary()
+          : this.renderEmtyCart()}
       </div>
     );
   }
