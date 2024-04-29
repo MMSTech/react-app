@@ -6,6 +6,8 @@ import { Container, Row, Col } from "reactstrap";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./NotFound";
 import CartList from "./CartList";
+import FormDemo1 from "./FormDemo1";
+import FormDemo2 from "./FormDemo2";
 
 export default class App extends Component {
   //Arrow function , bir fonksiyon aynı zamanda bir değişken
@@ -71,25 +73,30 @@ export default class App extends Component {
             <Col xs="9">
               <Routes>
                 <Route
-             
                   path="/"
                   element={
-                      <ProductList
+                    <ProductList
                       addToCart={this.addToCart}
                       products={this.state.products}
                       currentCategory={this.state.currentCategory}
                       info={productInfo}
                     ></ProductList>
-            
                   }
                 />
-                <Route path="/cart" element={
-                 <CartList    removeFromCart={this.removeFromCart}
-                              cart={this.state.cart}>
-                   
-                  </CartList>
-                } />
-                <Route exact path='*' element={<NotFound></NotFound>} />
+                <Route
+                  path="/cart"
+                  element={
+                    <CartList
+                      removeFromCart={this.removeFromCart}
+                      cart={this.state.cart}
+                    ></CartList>
+                  }
+                />
+
+                <Route path="form1" element={<FormDemo1></FormDemo1>} />
+                <Route path="form2" element={<FormDemo2></FormDemo2>} />
+
+                <Route exact path="*" element={<NotFound></NotFound>} />
               </Routes>
             </Col>
           </Row>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Collapse,
   Navbar,
@@ -7,8 +7,9 @@ import {
   Nav,
   NavItem,
   NavLink,
- } from 'reactstrap';
-import CartSummary from './CartSummary';
+} from "reactstrap";
+import CartSummary from "./CartSummary";
+import { Link } from "react-router-dom";
 
 export default class Navi extends React.Component {
   constructor(props) {
@@ -16,12 +17,12 @@ export default class Navi extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
   render() {
@@ -33,16 +34,25 @@ export default class Navi extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink>
+                  <Link to="/form1">Form Demo1</Link>
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink>
+                  <Link to="/form2">Form Demo2</Link>
+                </NavLink>
               </NavItem>
-            
-              <CartSummary 
-                    removeFromCart={this.props.removeFromCart}
-                    cart={this.props.cart}>
-                </CartSummary>
+              <NavItem>
+                <NavLink href="https://github.com/reactstrap/reactstrap">
+                  GitHub
+                </NavLink>
+              </NavItem>
+
+              <CartSummary
+                removeFromCart={this.props.removeFromCart}
+                cart={this.props.cart}
+              ></CartSummary>
             </Nav>
           </Collapse>
         </Navbar>
